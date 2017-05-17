@@ -40,7 +40,7 @@ try {
    $accessToken = $helper->getAccessToken();  
   // var_dump($accessToken);
    
-   $response1 = $fb->get('/me?fields=id,name,about,birthday,political,feed,likes', $accessToken);
+   $response1 = $fb->get('/me?fields=id,name,about,birthday,political,feed,likes,gender', $accessToken);
   $response2 = $fb->get('/me/likes?fields=about', $accessToken, 'summary=true');
   
   
@@ -70,7 +70,8 @@ $birthday = $user['birthday'];
 $political = $user['political'];
 $feedarray = $user['feed'];
 $fbid = $user['id'];
-
+$gender = $user['gender'];
+echo $gender;
 
 //calculate age
 $age = date_diff($birthday, date_create('today'))->y;
@@ -115,8 +116,8 @@ if ($conn->query($sql) === TRUE) {
 
 //insert user into database
 
-$sql = "INSERT INTO facebookresults (userid,age,political, usercopy )
-VALUES ('$userid','$age','$political', '$usercopy')";
+$sql = "INSERT INTO facebookresults (userid,age,political, usercopy, gender )
+VALUES ('$userid','$age','$political', '$usercopy', '$gender')";
 
 if ($conn->query($sql) === TRUE) {
     //echo "New record created successfully";

@@ -41,7 +41,8 @@ $permissions = ['public_profile','user_religion_politics', 'user_birthday', 'use
 //);
  
 // Get login URL
-$callback    = "http://www.meganknight.uk/research/getdatafromfacebook.php?userid='$userid'";
+ $callback    = "http://www.meganknight.uk/research/getdatafromfacebook.php?userid='$userid'";
+//$callback    = "http://localhost/research/getdatafromfacebook.php?userid='$userid'";
 $loginUrl    = $helper->getLoginUrl($callback, $permissions);
 $helper = $fb->getRedirectLoginHelper();
 
