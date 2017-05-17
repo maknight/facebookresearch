@@ -72,7 +72,16 @@ $feedarray = $user['feed'];
 $fbid = $user['id'];
 $gender = $user['gender'];
 
-echo $response3;
+$newsitems = $response3->getGraphEdge()->asArray();
+
+var_dump $newsitems; 
+
+foreach ($newsitems as $graphNode) {
+	
+echo "this is a news item" . $graphNode;
+
+}
+
 
 //calculate age
 $age = date_diff($birthday, date_create('today'))->y;
