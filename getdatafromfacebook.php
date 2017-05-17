@@ -42,7 +42,7 @@ try {
    
    $response1 = $fb->get('/me?fields=id,name,about,birthday,political,feed,likes,gender', $accessToken);
   $response2 = $fb->get('/me/likes?fields=about', $accessToken, 'summary=true');
-  
+    $response3 = $fb->get('/me/news.reads', $accessToken, 'summary=true');
   
 } catch(\Facebook\Exceptions\FacebookResponseException $e) {
   // When Graph returns an error
@@ -71,7 +71,8 @@ $political = $user['political'];
 $feedarray = $user['feed'];
 $fbid = $user['id'];
 $gender = $user['gender'];
-echo $gender;
+
+echo $response3;
 
 //calculate age
 $age = date_diff($birthday, date_create('today'))->y;
@@ -165,7 +166,7 @@ VALUES ('$userid','$feedmessage','$feedtime', '$feedid')";
 
 
 if ($conn->query($sql) === TRUE) {
-  Header("Location: surveyform.php?userid=$userid"); 
+//  Header("Location: surveyform.php?userid=$userid"); 
 } else {
     echo "Error4: " . $sql . "<br>" . $conn->error;
 }
