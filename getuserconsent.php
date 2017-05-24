@@ -38,7 +38,7 @@ I understand the purpose of this research is to analyse the presentation of stor
 I understand that I can withdraw from the study at any time by closing the browser window and that no further obligation will ensue.<br>
 <input type="radio" name="withdraw" value="yes" > Yes<br>
 <input type="radio" name="withdraw" value="no"> No<br>
- I am over eighteen years old<br>
+ I am over eighteen years old.<br>
 <input type="radio" name="age" value="yes" > Yes<br>
 <input type="radio" name="age" value="no"> No<br>
 

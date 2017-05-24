@@ -31,7 +31,7 @@ $fb = new Facebook\Facebook([
   
 ]);
 $helper = $fb->getRedirectLoginHelper();
-$permissions = ['public_profile','user_religion_politics', 'user_birthday', 'user_posts', 'user_likes']; // optional
+$permissions = ['public_profile','user_religion_politics', 'user_birthday', 'user_posts', 'user_likes', 'user_actions.news']; // optional
 //$permissions = array(
     //'public_profile',
     //'user_location',

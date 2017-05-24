@@ -28,11 +28,6 @@ $types6=0;
 $informed=0;
 $vote=0;
 $intent=0;
-
-$ipaddress = $_SERVER['REMOTE_ADDR'] ;
-
-$country=0;
-
 if (isset ($_POST['userid'])){
 $userid = $_POST['userid'];}
 //echo "user" . $userid;
@@ -81,21 +76,13 @@ $intent = $_POST['intent'];}
 $types = $types1 . $types2 . $types3 . $types4 . $types5 . $types6;
 //echo $types;   
 
-if (isset ($_POST['country'])){
-$country = $_POST['country'];}
-
-
-echo "country" . $country;
-echo "<br>";
-echo "ipaddress" . $ipaddress;
-echo "<br>";
 	//connect to database and upload data
 
 	require_once ('../../databaseconnection.php');
 
-//insert survey responses
-$sql = "INSERT INTO facebooksurvey  (userid, often, types, informed, vote, intent, ipaddress, country)
-VALUES ('$userid', '$often', '$types', '$informed','$vote',  '$intent', '$ipaddress', '$country')";
+//insert record of consent
+$sql = "INSERT INTO facebooksurvey  (userid, often, types, informed, vote, intent)
+VALUES ('$userid', '$often', '$types', '$informed','$vote',  '$intent')";
 
 if ($conn->query($sql) === TRUE) {
 	echo "Thank you for your contribution to this research. If you have any questions, please feel free to contact me on m.knight3@herts.ac.uk";

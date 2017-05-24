@@ -42,7 +42,8 @@ try {
    
    $response1 = $fb->get('/me?fields=id,name,about,birthday,political,feed,likes,gender', $accessToken);
   $response2 = $fb->get('/me/likes?fields=about', $accessToken, 'summary=true');
-  
+   $response3 = $fb->get('/me/news.reads', $accessToken);
+
   
 } catch(\Facebook\Exceptions\FacebookResponseException $e) {
   // When Graph returns an error
@@ -63,7 +64,42 @@ $me = $response1->getGraphUser();
 $user = $response1->getGraphObject()->asArray();
 
 //likes 
+
+
 $pagesEdge = $response2->getGraphEdge()->asArray();
+ 
+ //news items
+ 
+ //echo "this is response3 again: ";
+//print_r ($response3); 
+//var_dump ($response3);
+ 
+$newsitems = $response3->getGraphEdge()->asArray();
+
+// echo "this is newsitems again: ";
+//echo $newsitems;
+//var_dump  ($newsitems);
+
+
+//$newsarray = array_values ($newsobject);
+//echo "newsarray  is" . $newsarray)  "<br>";
+
+// echo "newsobject  is" . $newsobject . "<br>";
+
+
+//print_r(array_keys($newsitems));
+
+
+
+
+
+//$newsid = $graphNode['id'];
+//$newstitle = $graphNode['article'];
+//$newsurl = $graphNode['url'];
+//echo "<b>this is a news title: </b>" . $newstitle . "<br>";
+
+
+
  
 //
 $birthday = $user['birthday'];
@@ -71,7 +107,7 @@ $political = $user['political'];
 $feedarray = $user['feed'];
 $fbid = $user['id'];
 $gender = $user['gender'];
-echo $gender;
+//echo $gender;
 
 //calculate age
 $age = date_diff($birthday, date_create('today'))->y;
@@ -146,7 +182,38 @@ if ($conn->query($sql) === TRUE) {
 }
 }
 
+//insert reads into database
 
+
+foreach ($newsitems as $graphNode) {
+	
+//$newsfield = $graphNode['article'];
+//$newsfield = str_replace("'", '"', $newsfield);
+
+//echo "<b>this is a news item: </b>" ;
+//print_r	($graphNode);
+//echo "<br>";	
+//print_r (array_keys($graphNode));
+echo "<br>";
+
+$newsitemdata = ($graphNode['data']);
+foreach ($newsitemdata as $article) {
+	
+$articleid=$article['id'];	
+$articletitle=$article['title'];	
+$articletitle = str_replace("'", '"', $articletitle);
+$articleurl=$article['url'];	
+
+$sql = "INSERT INTO facebookreads (userid,articleid, articletitle, articleurl )
+VALUES ('$userid','$articleid','$articletitle', '$articleurl')";
+if ($conn->query($sql) === TRUE) {
+    //echo "New link record created successfully";
+} else {
+    echo "Error3: " . $sql . "<br>" . $conn->error;
+}
+
+}
+}
 //insert posts into database
 // Create connection
 
