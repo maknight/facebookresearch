@@ -1,10 +1,40 @@
 
 <!DOCTYPE html>
-<html>
-<title>Megan Knight - University of Hertfordshire - Social Media Research</title>
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>Megan Knight - University of Hertfordshire - Social Media Research</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="images/favicon.png">
+
+</head>
 <body>
 
-<h3>Megan Knight - University of Hertfordshire</h3>
+  <div class="container">
+    <div class="row">
+      <div class="one-half column" style="margin-top: 25%">
+
+<h5>Megan Knight - University of Hertfordshire</h5>
 
 <?php
 
@@ -52,7 +82,7 @@ elseif ((strcmp($age, "yes") !== 0))
 }
 else 
 {
-	require_once ('../../databaseconnection.php');
+	require_once ('../databaseconnection.php');
 } 
 
 //insert record of consent
@@ -68,5 +98,7 @@ if ($conn->query($sql) === TRUE) {
 $conn->close();
 
 ?>
-
+      </div>
+    </div>
+  </div>
 </html>

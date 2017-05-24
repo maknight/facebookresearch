@@ -6,7 +6,7 @@
 
 
 
-<h3>Megan Knight - University of Hertfordshire</h3>
+<h5>Megan Knight - University of Hertfordshire</h5>
 
 <?php
 // Pass session data over.
@@ -78,7 +78,7 @@ $types = $types1 . $types2 . $types3 . $types4 . $types5 . $types6;
 
 	//connect to database and upload data
 
-	require_once ('../../databaseconnection.php');
+	require_once ('../databaseconnection.php');
 
 //insert record of consent
 $sql = "INSERT INTO facebooksurvey  (userid, often, types, informed, vote, intent)

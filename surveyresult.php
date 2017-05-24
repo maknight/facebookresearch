@@ -1,12 +1,40 @@
 
 <!DOCTYPE html>
-<html>
-<title>Megan Knight - University of Hertfordshire - Social Media Research</title>
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>Megan Knight - University of Hertfordshire - Social Media Research</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="images/favicon.png">
+
+</head>
 <body>
 
+  <div class="container">
+    <div class="row">
+      <div class="one-half column" style="margin-top: 25%">
 
-
-<h3>Megan Knight - University of Hertfordshire</h3>
+<h5>Megan Knight - University of Hertfordshire</h5>
 
 <?php
 // Pass session data over.
@@ -85,13 +113,13 @@ if (isset ($_POST['country'])){
 $country = $_POST['country'];}
 
 
-echo "country" . $country;
-echo "<br>";
-echo "ipaddress" . $ipaddress;
-echo "<br>";
+//echo "country" . $country;
+//echo "<br>";
+//echo "ipaddress" . $ipaddress;
+//echo "<br>";
 	//connect to database and upload data
 
-	require_once ('../../databaseconnection.php');
+	require_once ('../databaseconnection.php');
 
 //insert survey responses
 $sql = "INSERT INTO facebooksurvey  (userid, often, types, informed, vote, intent, ipaddress, country)
@@ -110,6 +138,8 @@ if ($conn->query($sql) === TRUE) {
 $conn->close();
 
 ?>
-
+      </div>
+    </div>
+  </div>
 </html>
 
